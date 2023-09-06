@@ -23,17 +23,16 @@ def homepage():
 @app.route('/cart', methods=['GET', 'POST'])
 def view_cart():
     if request.method == 'POST':
-        # Get the selected product name from the form
         selected_product_name = request.form.get('product_name')
-
-        # Find the selected product in the product list
         selected_product = next((product for product in product_list if product['prod_name'] == selected_product_name), None)
-
         if selected_product:
-            # Add the selected product to the cart
             cart.append(selected_product)
 
-    return render_template('cart.html', links=links, cart=cart)
+    # Calculate the total price and total item count
+    total_price = sum(item['prod_price'] for item in cart)
+    total_items = len(cart)
+
+    return render_template('cart.html', links=links, cart=cart, total_price=total_price, total_items=total_items)
 
 if __name__ == '__main__':
     app.run(debug=True)
