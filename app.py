@@ -11,7 +11,7 @@ user_data = [
 
 # Define a list of dictionaries for the links
 links = [
-    {"name": "Link 1", "url": "/page/1"},
+    {"name": "user_list", "url": "/page/1"},
 ]
 
 @app.route('/')
@@ -20,9 +20,8 @@ def homepage():
 
 @app.route('/page/<int:page_num>')
 def page(page_num):
-    # Ensure that the page_num is within the valid range (1-1 for "page1")
     if page_num == 1:
-        return render_template('page1.html', links=links, user_data=user_data)
+        return render_template('user_list.html', links=links, user_data=user_data)
     else:
         return "Page not found"
 

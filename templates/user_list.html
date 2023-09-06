@@ -10,14 +10,6 @@
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            {% for link in links %}
-                <li><a href="{{ link.url }}">{{ link.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
-    <h1>Welcome to Page 1</h1>
     <h2>List of Names and Emails:</h2>
     <ul>
         {% for user in user_data %}
